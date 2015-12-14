@@ -4,7 +4,7 @@
 
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>laboratory</artifactId>
-	<version>0.6.0</version>
+	<version>0.6.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Laboratory</name>
 	<description>Laboratory module</description>

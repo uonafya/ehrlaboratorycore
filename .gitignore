@@ -4,3 +4,6 @@
 /.project
 /.classpath
 /.bin
+.idea/
+api/laboratory-api.iml
+omod/laboratory-omod.iml

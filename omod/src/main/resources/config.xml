@@ -8,12 +8,12 @@
 	<name>@MODULE_NAME@</name>
 	<version>@MODULE_VERSION@</version>
 	<package>@MODULE_PACKAGE@</package>
-	<author>Ghanshyam, Sagar, Truong Ha</author>
+	<author>HealthIT</author>
 	<description>
-			Laboratory
+			Laboratory module for the EHR work in Kenya
 	</description>
 
-	<activator>@MODULE_PACKAGE@.LaboratoryActivator</activator>
+	<activator>org.openmrs.module.ehrlaboratory.LaboratoryActivator</activator>
 	
 	<require_modules>
                   <require_module>org.openmrs.module.hospitalcore</require_module>
@@ -26,11 +26,11 @@
 	
 	<extension>
 		<point>org.openmrs.admin.list</point>
-		<class>@MODULE_PACKAGE@.extension.html.AdminList</class>
+		<class>org.openmrs.module.ehrlaboratory.extension.html.AdminList</class>
 	</extension>
 	<extension>
 		<point>org.openmrs.gutter.tools</point>
-		<class>@MODULE_PACKAGE@.extension.html.LaboratoryHeader</class>
+		<class>org.openmrs.module.ehrlaboratory.extension.html.LaboratoryHeader</class>
 	</extension>
 	
 	<!-- AOP
@@ -78,15 +78,15 @@
 	</privilege>	
 	
 	<globalProperty>
-		<property>@MODULE_ID@.maintainCode</property>
+		<property>ehrlaboratory.maintainCode</property>
 		<defaultValue></defaultValue>
 		<description>
-			Maintain code of Laboratory module
+			Maintain code of Laboratory module for the EHR work
 		</description>
 	</globalProperty>
 	
 	<globalProperty>
-		<property>@MODULE_ID@.worklist.findAllInvestigation</property>
+		<property>ehrlaboratory.worklist.findAllInvestigation</property>
 		<defaultValue>false</defaultValue>
 		<description>
 			Allow users to search for test from all investigations
@@ -95,7 +95,7 @@
 	
 	<!--ghanshyam 8-august-2012  New Requirement #319 [LABORATORY] Make Consolidated Work List an Option in the investigation drop down list -->
 	<globalProperty>
-		<property>@MODULE_ID@.printworklist.findAllInvestigation</property>
+		<property>ehrlaboratory.printworklist.findAllInvestigation</property>
 		<defaultValue>false</defaultValue>
 		<description>
 			Allow users to search for test from all investigations

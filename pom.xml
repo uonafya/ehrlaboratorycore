@@ -3,34 +3,23 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>laboratory</artifactId>
-	<version>0.6.2</version>
+	<artifactId>ehrlaboratory</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Laboratory</name>
-	<description>Laboratory module</description>
+	<name>EHR Laboratory Core Module</name>
+	<description>Laboratory module for the core services for the EHR worl</description>
 
-	<url>http://openmrs.org</url>
+	<url>https://unes.co.ke/health-it/</url>
 
 	<scm>
-		<connection>scm:git:git://github.com/truonghatsts/laboratory.git/</connection>
-		<developerConnection>scm:git:git://github.com/truonghatsts/laboratory.git/</developerConnection>
-		<url>scm:git:git://github.com/truonghatsts/laboratory.git/</url>
+		<connection>scm:git:https://github.com/uonafya/ehrlaboratorycore.git</connection>
+		<developerConnection>scm:git:https://github.com/uonafya/ehrlaboratorycore.git</developerConnection>
+		<url>https://github.com/uonafya/ehrlaboratorycore.git</url>
+		<tag>HEAD</tag>
 	</scm>
 	
 	<distributionManagement>
-        <!-- use the following if you're not using a snapshot version. -->
-            <repository>
-                <id>shimla-nexus</id>
-                <name>Shimla nexus repo</name>
-                <url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-releases/</url>
-            </repository>
-        <!-- use the following if you ARE using a snapshot version. -->
-            <snapshotRepository>
-                <id>shimla-nexus</id>
-                <name>Shimla nexus repo</name>
-                <url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-snapshots/</url>
-                <uniqueVersion>false</uniqueVersion>
-             </snapshotRepository>
+
      </distributionManagement>
 
 	<modules>
@@ -40,6 +29,7 @@
 
 	<properties>
 		<openMRSVersion>1.9.7</openMRSVersion>
+		<hospitalcoreVersion>1.0.0-SNAPSHOT</hospitalcoreVersion>
 	</properties>
 
 	<dependencyManagement>
@@ -71,6 +61,12 @@
 				<version>${openMRSVersion}</version>
 				<type>pom</type>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>hospitalcore-api</artifactId>
+				<version>${hospitalcoreVersion}</version>
+				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -109,7 +105,7 @@
 					<configuration>
 						<noDeploy>true</noDeploy>
 						<flowInitContext>
-							<developBranchName>qa</developBranchName>
+							<developBranchName>master</developBranchName>
 						</flowInitContext>
 					</configuration>
 				</plugin>
@@ -121,41 +117,20 @@
 		<repository>
 			<id>openmrs-repo</id>
 			<name>OpenMRS Nexus Repository</name>
-			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
+			<url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
 		</repository>
 		<repository>
-			<id>shimla-nexus-snapshots</id>
-			<name>OpenMRS Nexus Repository</name>
-			<url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-snapshots</url>
-		</repository>
-		<repository>
-			<id>shimla-nexus-releases</id>
-			<name>OpenMRS Nexus Repository</name>
-			<url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-releases</url>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>https://repo1.maven.org/maven2</url>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>openmrs-repo</id>
 			<name>OpenMRS Nexus Repository</name>
-			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>shimla-nexus-snapshots</id>
-			<name>shimla nexus snapshots</name>
-			<url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-snapshots</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>shimla-nexus-releases</id>
-			<name>shimla nexus releases</name>
-			<url>http://hospdev.hispindia.org/nexus/content/repositories/version3.1-releases</url>
+			<url>https://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>

@@ -3,18 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>laboratory</artifactId>
-		<version>0.6.2</version>
+		<artifactId>ehrlaboratory</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>laboratory-omod</artifactId>
+	<artifactId>ehrlaboratory-omod</artifactId>
 	<packaging>omod</packaging>
-	<name>Laboratory module OMOD</name>
-	<description>OpenMRS module project for Laboratory</description>
+	<name>EHR Laboratory module OMOD</name>
+	<description>EHR module project for Laboratory</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>laboratory-api</artifactId>
+			<artifactId>ehrlaboratory-api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
@@ -38,8 +38,6 @@
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>hospitalcore-api</artifactId>
-			<version>1.5.3</version>
-			<scope>provided</scope>
 		</dependency>
 		<!-- Apache Commons Upload -->
 		<dependency>

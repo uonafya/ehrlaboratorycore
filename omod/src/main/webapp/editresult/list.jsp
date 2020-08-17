@@ -1,27 +1,19 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
- *
- *  This file is part of Laboratory module.
- *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
+<%--
+**
+* This Source Code Form is subject to the terms of the Mozilla Public License,
+* v. 2.0. If a copy of the MPL was not distributed with this file, You can
+* obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+* the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+*
+* Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+* graphic logo is a trademark of OpenMRS Inc.
+*
 --%> 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
 <br/>
-<openmrs:require privilege="Edit Laboratory Result" otherwise="/login.htm" redirect="/module/laboratory/editResult.form" />
+<openmrs:require privilege="Edit Laboratory Result" otherwise="/login.htm" redirect="/module/ehrlaboratory/editResult.form" />
 <openmrs:globalProperty key="hospitalcore.hospitalName" defaultValue="ddu" var="hospitalName"/>
 <%@ include file="../localHeader.jsp" %>
 
@@ -44,7 +36,7 @@
                 buttonImageOnly: true});
 		jQuery("#searchbox").showPatientSearchBox({				
 			searchBoxView: "${hospitalName}/default",			
-			resultView: "/module/laboratory/patientsearch/${hospitalName}/editresult",		
+			resultView: "/module/ehrlaboratory/patientsearch/${hospitalName}/editresult",
 			target: "#patientResult",
 			beforeNewSearch: function(){
 				jQuery("#patientSearchResultSection").hide();
@@ -65,7 +57,7 @@
 		var investigation = jQuery("#investigation").val();
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/searchCompletedTests.form",
+			url : getContextPath() + "/module/ehrlaboratory/searchCompletedTests.form",
 			data : ({
 				date			: date,
 				phrase			: phrase,
@@ -88,7 +80,7 @@
 		
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/showForm.form",
+			url : getContextPath() + "/module/ehrlaboratory/showForm.form",
 			data : ({
 				encounterId : encounterId,
 				conceptId	: conceptId

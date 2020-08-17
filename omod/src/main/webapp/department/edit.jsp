@@ -1,25 +1,17 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
+<%--
+ **
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ * obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+ * the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
  *
- *  This file is part of Laboratory module.
+ * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+ * graphic logo is a trademark of OpenMRS Inc.
  *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
---%> 
+--%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
 
-<openmrs:require privilege="Manage Radiology" otherwise="/login.htm" redirect="/module/laboratory/editDepartment.form" />
+<openmrs:require privilege="Manage Radiology" otherwise="/login.htm" redirect="/module/ehrlaboratory/editDepartment.form" />
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
 <br/>
@@ -29,10 +21,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#investigationConceptAutocomplete").autocomplete(getContextPath() + '/module/laboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
+		$("#investigationConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
 			insertInvestigationConcept(item);
 		});
-		$("#confidentialConceptAutocomplete").autocomplete(getContextPath() + '/module/laboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
+		$("#confidentialConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
 			insertConfidentialConcept(item);
 		});
 		

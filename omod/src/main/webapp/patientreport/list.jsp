@@ -1,27 +1,9 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
- *
- *  This file is part of Laboratory module.
- *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
 
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
---%> 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
 <br/>
-<openmrs:require privilege="Manage Laboratory Patient Report" otherwise="/login.htm" redirect="/module/laboratory/patientReport.form" />
+<openmrs:require privilege="Manage Laboratory Patient Report" otherwise="/login.htm" redirect="/module/ehrlaboratory/patientReport.form" />
 <openmrs:globalProperty key="hospitalcore.hospitalName" defaultValue="ddu" var="hospitalName"/>
 <%@ include file="../localHeader.jsp" %>
 <script type="text/javascript">
@@ -32,7 +14,7 @@
                 buttonImageOnly: true});
 		jQuery("#searchbox").showPatientSearchBox({		
 			searchBoxView: "${hospitalName}/default",			
-			resultView: "/module/laboratory/patientsearch/${hospitalName}/patientreport",		
+			resultView: "/module/ehrlaboratory/patientsearch/${hospitalName}/patientreport",
 			target: "#patientResult",
 			beforeNewSearch: function(){
 				jQuery("#patientSearchResultSection").hide();
@@ -48,7 +30,7 @@
 		var date = jQuery("#date").val();
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/searchPatientReport.form",
+			url : getContextPath() + "/module/ehrlaboratory/searchPatientReport.form",
 			data : ({
 				date			 : date,
 				patientId: patientId
@@ -71,7 +53,7 @@
 		
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/ajax/showTestInfo.htm",
+			url : getContextPath() + "/module/ehrlaboratory/ajax/showTestInfo.htm",
 			data : ({
 				patientId	: patientId,
 				orderDate   : date
@@ -89,7 +71,7 @@
 	// Show patient report form
 	function showForm(radiologyTestId, type){		
 		type=escape(type);
-		url = getContextPath() + "/module/laboratory/showForm.form?mode=view&height=600&width=800&radiologyTestId=" + radiologyTestId + "&type=" + type;
+		url = getContextPath() + "/module/ehrlaboratory/showForm.form?mode=view&height=600&width=800&radiologyTestId=" + radiologyTestId + "&type=" + type;
 		tb_show("Patient report", url);	
 	}
 	

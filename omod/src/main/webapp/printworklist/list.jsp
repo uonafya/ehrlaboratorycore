@@ -1,27 +1,19 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
- *
- *  This file is part of Laboratory module.
- *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
---%> 
+<%--
+**
+* This Source Code Form is subject to the terms of the Mozilla Public License,
+* v. 2.0. If a copy of the MPL was not distributed with this file, You can
+* obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+* the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+*
+* Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+* graphic logo is a trademark of OpenMRS Inc.
+*
+--%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
 <br/>
-<openmrs:require privilege="Print Laboratory Worklist" otherwise="/login.htm" redirect="/module/laboratory/printWorklist.form" />
+<openmrs:require privilege="Print Laboratory Worklist" otherwise="/login.htm" redirect="/module/ehrlaboratory/printWorklist.form" />
 <%--ghanshyam 8-august-2012  New Requirement #319 [LABORATORY] Make Consolidated Print Work List an Option in the investigation drop down list --%>
 <openmrs:globalProperty key="laboratory.printworklist.findAllInvestigation" defaultValue="false" var="findAllInvestigation" />
 <%@ include file="../localHeader.jsp" %>
@@ -51,7 +43,7 @@ var GLOBAL = {
 		if(validation.status){			
 			jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/searchPrintWorklist.form",
+			url : getContextPath() + "/module/ehrlaboratory/searchPrintWorklist.form",
 			data : ({
 				date			: date,
 				phrase			: phrase,
@@ -120,7 +112,7 @@ var GLOBAL = {
 		validation = validate(investigation);	
 		var showResults=document.getElementById("showResults").checked;
 		if(validation.status){			
-		window.location = getContextPath() + "/module/laboratory/download.form?date=" + date + "&phrase=" + phrase + "&investigation=" + investigation + "&showResults=" + showResults;
+		window.location = getContextPath() + "/module/ehrlaboratory/download.form?date=" + date + "&phrase=" + phrase + "&investigation=" + investigation + "&showResults=" + showResults;
 	} 
 	else {
 			alert(validation.message);

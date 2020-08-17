@@ -1,27 +1,19 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
- *
- *  This file is part of Laboratory module.
- *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
---%> 
+<%--
+**
+* This Source Code Form is subject to the terms of the Mozilla Public License,
+* v. 2.0. If a copy of the MPL was not distributed with this file, You can
+* obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+* the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+*
+* Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+* graphic logo is a trademark of OpenMRS Inc.
+*
+--%>
 <script type="text/javascript">
 	$ = jQuery.noConflict();
 </script>
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/hospitalcore/styles/paging.css" />
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/laboratory/styles/common.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/ehrlaboratory/styles/common.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/hospitalcore/styles/jquery.loadmask.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/css/thickbox.css" />
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/css/jquery.autocomplete.css" />
@@ -31,7 +23,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.PrintArea.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.thickbox.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/laboratory/scripts/jquery/jquery.form.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/ehrlaboratory/scripts/jquery/jquery.form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.search.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.patientSearch.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/moduleResources/hospitalcore/scripts/jquery/jquery.loadmask.min.js"></script> 

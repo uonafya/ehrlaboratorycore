@@ -1,22 +1,14 @@
- <%--
- *  Copyright 2009 Society for Health Information Systems Programmes, India (HISP India)
- *
- *  This file is part of Laboratory module.
- *
- *  Laboratory module is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
-
- *  Laboratory module is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Laboratory module.  If not, see <http://www.gnu.org/licenses/>.
- *
---%> 
+<%--
+**
+* This Source Code Form is subject to the terms of the Mozilla Public License,
+* v. 2.0. If a copy of the MPL was not distributed with this file, You can
+* obtain one at http://mozilla.org/MPL/2.0/. OpenMRS is also distributed under
+* the terms of the Healthcare Disclaimer located at http://openmrs.org/license.
+*
+* Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
+* graphic logo is a trademark of OpenMRS Inc.
+*
+--%>
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="../includes/js_css.jsp" %>
@@ -24,7 +16,7 @@
 <body onload="reset();">
 
 <br/>
-<openmrs:require privilege="Manage Laboratory Queue" otherwise="/login.htm" redirect="/module/laboratory/queue.form" />
+<openmrs:require privilege="Manage Laboratory Queue" otherwise="/login.htm" redirect="/module/ehrlaboratory/queue.form" />
 <%@ include file="../localHeader.jsp" %>
 <script type="text/javascript">
 
@@ -49,7 +41,7 @@
 		var investigation = jQuery("#investigation").val();
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/searchTest.form",
+			url : getContextPath() + "/module/ehrlaboratory/searchTest.form",
 			data : ({
 				date			: date,
 				phrase			: phrase,
@@ -73,7 +65,7 @@
 		sampleId = jQuery("#sampleId" + orderId).val();
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/ajax/acceptTest.htm",
+			url : getContextPath() + "/module/ehrlaboratory/ajax/acceptTest.htm",
 			data : ({
 				orderId : orderId,
 				date	: jQuery("#date").val(),
@@ -101,7 +93,7 @@
 		if(!editingSampleId){
 			jQuery.ajax({
 				type : "GET",				
-				url : getContextPath() + "/module/laboratory/ajax/getDefaultSampleId.htm",
+				url : getContextPath() + "/module/ehrlaboratory/ajax/getDefaultSampleId.htm",
 				data:  ({
 					orderId : orderId
 				}),
@@ -136,7 +128,7 @@
 	function unacceptTest(testId, orderId) {
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/ajax/unacceptTest.htm",
+			url : getContextPath() + "/module/ehrlaboratory/ajax/unacceptTest.htm",
 			data : ({
 				testId : testId
 			}),
@@ -165,7 +157,7 @@
 		validateRescheduleDateResult = false;
 		jQuery.ajax({
 			type : "GET",
-			url : getContextPath() + "/module/laboratory/ajax/validateRescheduleDate.htm",
+			url : getContextPath() + "/module/ehrlaboratory/ajax/validateRescheduleDate.htm",
 			data : ({				
 				rescheduleDate : rescheduledDate
 			}),
@@ -174,7 +166,7 @@
 				if (data.indexOf('success')>=0) {						
 					jQuery.ajax({
 						type : "POST",
-						url : getContextPath() + "/module/laboratory/rescheduleTest.form",
+						url : getContextPath() + "/module/ehrlaboratory/rescheduleTest.form",
 						data : ({
 							orderId : orderId,
 							rescheduledDate : rescheduledDate

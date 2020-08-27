@@ -10,7 +10,7 @@
 	<package>@MODULE_PACKAGE@</package>
 	<author>HealthIT</author>
 	<description>
-			Laboratory module for the EHR work in Kenya
+			Laboratory core module for the EHR work in Kenya
 	</description>
 
 	<activator>org.openmrs.module.ehrlaboratory.LaboratoryActivator</activator>

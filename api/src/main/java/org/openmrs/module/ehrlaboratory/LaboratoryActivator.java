@@ -13,7 +13,6 @@ package org.openmrs.module.ehrlaboratory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.ModuleActivator;
-import org.openmrs.module.ehrlaboratory.util.SetupLabTestsMetadata;
 
 /**
  * This class contains the logic that is run every time this module is either started or shutdown
@@ -28,8 +27,6 @@ public class LaboratoryActivator implements ModuleActivator {
 	}
 
 	public void started() {
-		//call the lab service here to save the object
-		SetupLabTestsMetadata.getAllInvestigationsSaved();
 		log.info("Started Laboratory module");
 	}
 

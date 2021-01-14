@@ -80,10 +80,10 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 		criteria.add(Restrictions.eq("orderType", orderType));
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");
-		criteria.add(Expression.between("startDate",
+		criteria.add(Expression.between("dateActivated",
 				dateTimeFormatter.parse(startDate),
 				dateTimeFormatter.parse(endDate)));
-		criteria.add(Restrictions.eq("discontinued", false));
+		criteria.add(Restrictions.eq("voided", false));
 		criteria.add(Restrictions.in("concept", tests));
 		if (!CollectionUtils.isEmpty(patients))
 			criteria.add(Restrictions.in("patient", patients));
@@ -104,16 +104,17 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 		criteria.add(Restrictions.eq("orderType", orderType));
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");
-		criteria.add(Expression.between("startDate",
+		criteria.add(Expression.between("dateActivated",
 				dateTimeFormatter.parse(startDate),
 				dateTimeFormatter.parse(endDate)));
-		criteria.add(Restrictions.eq("discontinued", false));
+		criteria.add(Restrictions.eq("voided", false));
 		criteria.add(Restrictions.in("concept", tests));
 		//ghanshyam-kesav 16-08-2012 Bug #323 [BILLING] When a bill with a lab\radiology order is edited the order is re-sent
 		criteria.add(Restrictions.isNull("dateVoided"));
-		if (!CollectionUtils.isEmpty(patients))
+		if (!CollectionUtils.isEmpty(patients)) {
 			criteria.add(Restrictions.in("patient", patients));
-		criteria.addOrder(org.hibernate.criterion.Order.asc("startDate"));
+			criteria.addOrder(org.hibernate.criterion.Order.asc("dateActivated"));
+		}
 		int firstResult = (page - 1) * LaboratoryConstants.PAGESIZE;
 		criteria.setFirstResult(firstResult);
 		criteria.setMaxResults(LaboratoryConstants.PAGESIZE);
@@ -195,9 +196,9 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
 				LabTest.class);
 		criteria.add(Restrictions.in("concept", tests));
-		if (!CollectionUtils.isEmpty(patients))
+		if (!CollectionUtils.isEmpty(patients)) {
 			criteria.add(Restrictions.in("patient", patients));
-
+		}
 		Criteria orderCriteria = criteria.createCriteria("order");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String startDate = sdf.format(date) + " 00:00:00";
@@ -205,7 +206,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");
-		orderCriteria.add(Expression.between("discontinuedDate",
+		orderCriteria.add(Expression.between("dateStopped",
 				dateTimeFormatter.parse(startDate),
 				dateTimeFormatter.parse(endDate)));
 
@@ -224,7 +225,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");
-		orderCriteria.add(Expression.between("discontinuedDate",
+		orderCriteria.add(Expression.between("dateStopped",
 				dateTimeFormatter.parse(startDate),
 				dateTimeFormatter.parse(endDate)));
 		criteria.add(Restrictions.eq("patient", patient));
@@ -266,7 +267,7 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");
-		criteria.add(Expression.between("startDate",
+		criteria.add(Expression.between("dateActivated",
 				dateTimeFormatter.parse(startDate),
 				dateTimeFormatter.parse(endDate)));
 		criteria.add(Restrictions.eq("patient", patient));

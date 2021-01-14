@@ -69,6 +69,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 
 	public Lab getCurrentDepartment() {
 		Set<Role> roles = Context.getAuthenticatedUser().getAllRoles();
+
 		List<Lab> departments = new ArrayList<Lab>();
 		for (Role role : roles) {
 			Lab department = dao.getDepartment(role);

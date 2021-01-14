@@ -20,36 +20,36 @@
 <h2>Manage Department</h2>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#investigationConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
+	jQuery(document).ready(function() {
+		jQuery("#investigationConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
 			insertInvestigationConcept(item);
 		});
-		$("#confidentialConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
+		jQuery("#confidentialConceptAutocomplete").autocomplete(getContextPath() + '/module/ehrlaboratory/ajax/autocompleteConceptSearch.htm').result(function(event, item){
 			insertConfidentialConcept(item);
 		});
 		
     });
 	
 	function insertInvestigationConcept(item){
-		$("#investigationNames").append("<option value='" + item + "'>" + item + "</option>");
-		$("#investigationConceptAutocomplete").val('');
+		jQuery("#investigationNames").append("<option value='" + item + "'>" + item + "</option>");
+		jQuery("#investigationConceptAutocomplete").val('');
 	}
 	
 	function deleteInvestigationConcept() {
-		options = $('#investigationNames option:checked').each(function(index, element){
-			e = $(this);
+		options = jQuery('#investigationNames option:checked').each(function(index, element){
+			e = jQuery(this);
 			e.remove();
 		});
 	}
 	
 	function insertConfidentialConcept(item){
-		$("#confidentialNames").append("<option value='" + item + "'>" + item + "</option>");
-		$("#confidentialConceptAutocomplete").val('');
+		jQuery("#confidentialNames").append("<option value='" + item + "'>" + item + "</option>");
+		jQuery("#confidentialConceptAutocomplete").val('');
 	}
 	
 	function deleteConfidentialConcept() {
-		options = $('#confidentialNames option:checked').each(function(index, element){
-			e = $(this);
+		options = jQuery('#confidentialNames option:checked').each(function(index, element){
+			e = jQuery(this);
 			e.remove();
 		});
 	}
@@ -60,7 +60,7 @@
 			investigations.childNodes[i].selected=true;
 		}
 		var confidentials = document.getElementById("confidentialNames");
-		for( var i=0; i< confidentials.childNodes.length; i++ ){
+		for( var k=0; k< confidentials.childNodes.length; k++ ){
 			confidentials.childNodes[i].selected=true;
 		}
 		document.forms["departmentForm"].submit(); 

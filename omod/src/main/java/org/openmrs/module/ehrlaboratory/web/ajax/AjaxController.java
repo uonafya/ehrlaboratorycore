@@ -154,6 +154,7 @@ public class AjaxController {
 			Model model) {
 		List<ConceptWord> cws = Context.getConceptService().findConcepts(name,
 				new Locale("en"), false);
+		System.out.println("The name entered is >>>"+name+" and found >>"+cws.size());
 		Set<String> conceptNames = new HashSet<String>();
 		for (ConceptWord word : cws) {
 			String conceptName = word.getConcept().getName().getName();

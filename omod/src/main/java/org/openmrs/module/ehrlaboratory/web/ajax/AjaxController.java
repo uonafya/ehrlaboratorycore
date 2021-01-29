@@ -10,6 +10,23 @@
 
 package org.openmrs.module.ehrlaboratory.web.ajax;
 
+import org.openmrs.Concept;
+import org.openmrs.Order;
+import org.openmrs.Patient;
+import org.openmrs.api.context.Context;
+import org.openmrs.module.ehrlaboratory.LaboratoryService;
+import org.openmrs.module.ehrlaboratory.util.LaboratoryConstants;
+import org.openmrs.module.ehrlaboratory.web.util.LaboratoryUtil;
+import org.openmrs.module.hospitalcore.model.LabTest;
+import org.openmrs.module.hospitalcore.util.PatientUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -22,25 +39,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.openmrs.Concept;
-import org.openmrs.ConceptWord;
-import org.openmrs.Order;
-import org.openmrs.Patient;
-import org.openmrs.api.context.Context;
-import org.openmrs.module.hospitalcore.model.LabTest;
-import org.openmrs.module.hospitalcore.util.PatientUtils;
-import org.openmrs.module.ehrlaboratory.LaboratoryService;
-import org.openmrs.module.ehrlaboratory.util.LaboratoryConstants;
-import org.openmrs.module.ehrlaboratory.web.util.LaboratoryUtil;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("LaboratoryAjaxController")
 public class AjaxController {
@@ -152,13 +150,13 @@ public class AjaxController {
 	public String autocompleteConceptSearch(
 			@RequestParam(value = "q", required = false) String name,
 			Model model) {
-		List<ConceptWord> cws = Context.getConceptService().findConcepts(name,
+		List<Concept> cws = Context.getConceptService().getConceptsByName(name,
 				new Locale("en"), false);
 		System.out.println("The name entered is >>>"+name+" and found >>"+cws.size());
 		Set<String> conceptNames = new HashSet<String>();
-		for (ConceptWord word : cws) {
-			String conceptName = word.getConcept().getName().getName();
-			conceptNames.add(conceptName);
+		for (Concept word : cws) {
+
+			conceptNames.add(word.getName().getName());
 		}
 		List<String> concepts = new ArrayList<String>();
 		concepts.addAll(conceptNames);

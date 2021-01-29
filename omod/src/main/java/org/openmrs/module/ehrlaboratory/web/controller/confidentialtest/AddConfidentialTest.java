@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -31,6 +32,9 @@ import org.openmrs.Location;
 import org.openmrs.Order;
 import org.openmrs.OrderType;
 import org.openmrs.Patient;
+import org.openmrs.Person;
+import org.openmrs.Provider;
+import org.openmrs.api.ProviderService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hospitalcore.BillingConstants;
 import org.openmrs.module.hospitalcore.model.Lab;
@@ -165,9 +169,9 @@ public class AddConfidentialTest {
 			order.setConcept(concept);
 			order.setCreator(Context.getAuthenticatedUser());
 			order.setDateCreated(new Date());
-			order.setOrderer(Context.getAuthenticatedUser());
+			order.setOrderer(getProvider(Context.getAuthenticatedUser().getPerson()));
 			order.setPatient(patient);
-			order.setStartDate(startDate);
+			order.setDateActivated(startDate);
 			order.setAccessionNumber("0");
 			order.setOrderType(orderType);
 			order.setEncounter(encounter);
@@ -187,5 +191,11 @@ public class AddConfidentialTest {
 				.getService(LaboratoryService.class);
 		List<Order> orders = ls.getOrders(patient, startDate, concept);
 		return CollectionUtils.isEmpty(orders);
+	}
+
+	private Provider getProvider(Person person) {
+		ProviderService providerService = Context.getProviderService();
+		List<Provider> providerList = new ArrayList<Provider>(providerService.getProvidersByPerson(person));
+		return providerList.get(0);
 	}
 }

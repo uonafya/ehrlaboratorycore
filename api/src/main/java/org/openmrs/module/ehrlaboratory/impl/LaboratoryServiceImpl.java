@@ -210,26 +210,26 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 
 	public String rescheduleTest(Order order, Date rescheduledDate) {
 
-		if (!order.getDiscontinued()) {
+		if (order.getDateStopped() == null) {
 			LabTest test = getLaboratoryTest(order);
 			if (test != null) {
 				if (test.getStatus().equalsIgnoreCase(
 						LaboratoryConstants.TEST_STATUS_ACCEPTED)) {
-					order.setStartDate(rescheduledDate);
+					order.setDateActivated(rescheduledDate);
 					order.setChangedBy(Context.getAuthenticatedUser());
 					order.setDateChanged(new Date());
 					deleteLaboratoryTest(test);
-					Context.getOrderService().saveOrder(order);
+					Context.getOrderService().saveOrder(order, null);
 					return LaboratoryConstants.RESCHEDULE_TEST_RETURN_STATUS_SUCCESS;
 				} else {
 					// TODO: add more reschedule test return status here
 					return test.getStatus();
 				}
 			} else {
-				order.setStartDate(rescheduledDate);
+				order.setDateActivated(rescheduledDate);
 				order.setChangedBy(Context.getAuthenticatedUser());
 				order.setDateChanged(new Date());
-				Context.getOrderService().saveOrder(order);
+				Context.getOrderService().saveOrder(order, null);
 				return LaboratoryConstants.RESCHEDULE_TEST_RETURN_STATUS_SUCCESS;
 			}
 		}
@@ -282,10 +282,10 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					.getStatus()
 					.equalsIgnoreCase(LaboratoryConstants.TEST_STATUS_COMPLETED)))) {
 				Order order = test.getOrder();
-				order.setDiscontinued(true);
-				order.setDiscontinuedDate(new Date());
-				order.setDiscontinuedBy(Context.getAuthenticatedUser());
-				Context.getOrderService().saveOrder(order);
+				order.setVoided(true);
+				order.setAutoExpireDate(new Date());
+				order.setChangedBy(Context.getAuthenticatedUser());
+				Context.getOrderService().saveOrder(order, null);
 				test.setStatus(LaboratoryConstants.TEST_STATUS_COMPLETED);
 				saveLaboratoryTest(test);
 				return LaboratoryConstants.COMPLETE_TEST_RETURN_STATUS_SUCCESS;

@@ -80,6 +80,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 
 		if (!CollectionUtils.isEmpty(departments)) {
 			return departments.get(0);
+
 		} else {
 			return null;
 		}
@@ -215,7 +216,8 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 			if (test != null) {
 				if (test.getStatus().equalsIgnoreCase(
 						LaboratoryConstants.TEST_STATUS_ACCEPTED)) {
-					order.setDateActivated(rescheduledDate);
+					order.setUrgency(Order.Urgency.ON_SCHEDULED_DATE);
+					order.setScheduledDate(rescheduledDate);
 					order.setChangedBy(Context.getAuthenticatedUser());
 					order.setDateChanged(new Date());
 					deleteLaboratoryTest(test);
@@ -226,7 +228,8 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					return test.getStatus();
 				}
 			} else {
-				order.setDateActivated(rescheduledDate);
+				order.setUrgency(Order.Urgency.ON_SCHEDULED_DATE);
+				order.setScheduledDate(rescheduledDate);
 				order.setChangedBy(Context.getAuthenticatedUser());
 				order.setDateChanged(new Date());
 				Context.getOrderService().saveOrder(order, null);

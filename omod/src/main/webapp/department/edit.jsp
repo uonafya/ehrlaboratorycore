@@ -59,11 +59,7 @@
 		for( var i=0; i< investigations.childNodes.length; i++ ){
 			investigations.childNodes[i].selected=true;
 		}
-		var confidentials = document.getElementById("confidentialNames");
-		for( var k=0; k< confidentials.childNodes.length; k++ ){
-			confidentials.childNodes[i].selected=true;
-		}
-		document.forms["departmentForm"].submit(); 
+		document.forms["departmentForm"].submit();
 	}
 </script>
 
@@ -137,29 +133,6 @@
 						<spring:bind path="department.investigationsToDisplay">
 							<select class="largeWidth" size="6" name="${status.expression}" id="investigationNames" multiple="multiple">
 								<c:forEach items="${department.investigationsToDisplay}" var="item">
-									<option value="${item.conceptId}">${item.name}</option>
-								</c:forEach>
-							</select>
-							<c:if test="${not empty status.errorMessage}"><span class="error">${status.errorMessage}</span></c:if>
-						</spring:bind>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td valign="top">Confidential Tests</td>
-		<td><input type='text' id='confidentialConceptAutocomplete' style="width:290px;"/><input type='button' value='Delete' onClick='deleteConfidentialConcept();'/></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td>
-			<table cellspacing="0" cellpadding="0">
-				<tr>
-					<td valign="top">
-						<spring:bind path="department.confidentialTestsToDisplay">
-							<select class="largeWidth" size="6" name="${status.expression}" id="confidentialNames" multiple="multiple">
-								<c:forEach items="${department.confidentialTestsToDisplay}" var="item">
 									<option value="${item.conceptId}">${item.name}</option>
 								</c:forEach>
 							</select>

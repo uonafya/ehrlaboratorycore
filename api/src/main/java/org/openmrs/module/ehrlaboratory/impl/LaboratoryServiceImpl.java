@@ -221,7 +221,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					order.setChangedBy(Context.getAuthenticatedUser());
 					order.setDateChanged(new Date());
 					deleteLaboratoryTest(test);
-					Context.getOrderService().saveOrder(order, null);
+					Context.getOrderService().getRevisionOrder(order);
 					return LaboratoryConstants.RESCHEDULE_TEST_RETURN_STATUS_SUCCESS;
 				} else {
 					// TODO: add more reschedule test return status here
@@ -232,7 +232,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 				order.setScheduledDate(rescheduledDate);
 				order.setChangedBy(Context.getAuthenticatedUser());
 				order.setDateChanged(new Date());
-				Context.getOrderService().saveOrder(order, null);
+				Context.getOrderService().getRevisionOrder(order);
 				return LaboratoryConstants.RESCHEDULE_TEST_RETURN_STATUS_SUCCESS;
 			}
 		}

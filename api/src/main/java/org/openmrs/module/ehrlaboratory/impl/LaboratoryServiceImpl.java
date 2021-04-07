@@ -89,7 +89,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 	//
 	// ORDER
 	//
-	public List<Order> getOrders(Date startDate, String phrase,
+	public List<Order> getOrders(Date dateActivated, String phrase,
 			Set<Concept> tests, int page) throws ParseException {
 
 		Integer laboratoryOrderTypeId = GlobalPropertyUtil.getInteger(
@@ -99,7 +99,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 
 		List<Patient> patients = Context.getPatientService()
 				.getPatients(phrase);
-		List<Order> orders = dao.getOrders(startDate, orderType, tests,
+		List<Order> orders = dao.getOrders(dateActivated, orderType, tests,
 				patients, page);
 		return orders;
 	}
@@ -196,11 +196,11 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 
 	/*
 	 * Check exisitng test with a given sample id
-	 * 
+	 *
 	 * @param sampleId
-	 * 
+	 *
 	 * @return
-	 * 
+	 *
 	 * @throws ParseException
 	 */
 	private boolean isTestExisting(String sampleId) throws ParseException {
@@ -285,10 +285,14 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					.getStatus()
 					.equalsIgnoreCase(LaboratoryConstants.TEST_STATUS_COMPLETED)))) {
 				Order order = test.getOrder();
-				order.setVoided(true);
-				order.setAutoExpireDate(new Date());
-				order.setChangedBy(Context.getAuthenticatedUser());
-				Context.getOrderService().saveOrder(order, null);
+				Order revisedOrder = order.cloneForDiscontinuing();
+				revisedOrder.setEncounter(test.getEncounter());
+				revisedOrder.setChangedBy(Context.getAuthenticatedUser());
+				revisedOrder.setOrderer(order.getOrderer());
+				revisedOrder.setAutoExpireDate(new Date());
+
+				Context.getOrderService().saveOrder(revisedOrder, null);
+
 				test.setStatus(LaboratoryConstants.TEST_STATUS_COMPLETED);
 				saveLaboratoryTest(test);
 				return LaboratoryConstants.COMPLETE_TEST_RETURN_STATUS_SUCCESS;
@@ -311,7 +315,7 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 	public LabTest getLaboratoryTest(Encounter encounter) {
 		return dao.getLaboratoryTest(encounter);
 	}
-	
+
 	public List<LabTest> getAllTest(){
 		return dao.getAllTest();
 	}

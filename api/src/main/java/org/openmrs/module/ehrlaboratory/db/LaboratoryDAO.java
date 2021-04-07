@@ -28,7 +28,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Save radiology department
-	 * 
+	 *
 	 * @param department
 	 * @return
 	 */
@@ -36,7 +36,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology department by id
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -44,14 +44,14 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Delete a radiology department
-	 * 
+	 *
 	 * @param department
 	 */
 	public void deleteLabDepartment(Lab department);
 
 	/**
 	 * Get radiology department by role
-	 * 
+	 *
 	 * @param role
 	 * @return
 	 */
@@ -59,8 +59,8 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Find orders
-	 * 
-	 * @param orderStartDate
+	 *
+	 * @param dateActivated
 	 * @param orderType
 	 * @param tests
 	 * @param patients
@@ -68,13 +68,13 @@ public interface LaboratoryDAO {
 	 * @return
 	 * @throws ParseException
 	 */
-	public List<Order> getOrders(Date orderStartDate, OrderType orderType,
+	public List<Order> getOrders(Date dateActivated, OrderType orderType,
 			Set<Concept> tests, List<Patient> patients, int page)
 			throws ParseException;
 
 	/**
 	 * Count the number of found orders
-	 * 
+	 *
 	 * @param orderStartDate
 	 * @param orderType
 	 * @param tests
@@ -88,7 +88,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Save radiology test
-	 * 
+	 *
 	 * @param test
 	 * @return
 	 */
@@ -96,7 +96,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology test by id
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -104,14 +104,14 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Delete a radiology test *
-	 * 
+	 *
 	 * @param test
 	 */
 	public void deleteLaboratoryTest(LabTest test);
 
 	/**
 	 * Get radiology test by order
-	 * 
+	 *
 	 * @param order
 	 * @return
 	 */
@@ -119,7 +119,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology tests
-	 * 
+	 *
 	 * @param date
 	 * @param status
 	 * @param concepts
@@ -132,7 +132,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology tets by date
-	 * 
+	 *
 	 * @param date
 	 * @param tests
 	 *            TODO
@@ -146,7 +146,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology tests by discontinued date
-	 * 
+	 *
 	 * @param date
 	 * @param tests
 	 *            TODO
@@ -160,7 +160,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get radiology test by date and patient
-	 * 
+	 *
 	 * @param date
 	 * @param patient
 	 * @return
@@ -171,7 +171,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get laboratory tests
-	 * 
+	 *
 	 * @param date
 	 * @param sampleId
 	 *            TODO
@@ -183,7 +183,7 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get order by patient, date, and concept
-	 * 
+	 *
 	 * @param patient
 	 * @param date
 	 * @param concept
@@ -195,11 +195,11 @@ public interface LaboratoryDAO {
 
 	/**
 	 * Get test by encounter
-	 * 
+	 *
 	 * @param encounter
 	 * @return
 	 */
 	public LabTest getLaboratoryTest(Encounter encounter);
-	
+
 	public List<LabTest> getAllTest();
 }

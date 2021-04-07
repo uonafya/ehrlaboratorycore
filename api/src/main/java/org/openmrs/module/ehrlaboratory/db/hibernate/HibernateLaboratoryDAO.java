@@ -93,14 +93,14 @@ public class HibernateLaboratoryDAO implements LaboratoryDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Order> getOrders(Date orderStartDate, OrderType orderType,
+	public List<Order> getOrders(Date dateActivated, OrderType orderType,
 			Set<Concept> tests, List<Patient> patients, int page)
 			throws ParseException {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(
 				Order.class);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String startDate = sdf.format(orderStartDate) + " 00:00:00";
-		String endDate = sdf.format(orderStartDate) + " 23:59:59";
+		String startDate = sdf.format(dateActivated) + " 00:00:00";
+		String endDate = sdf.format(dateActivated) + " 23:59:59";
 		criteria.add(Restrictions.eq("orderType", orderType));
 		SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(
 				"yyyy-MM-dd hh:mm:ss");

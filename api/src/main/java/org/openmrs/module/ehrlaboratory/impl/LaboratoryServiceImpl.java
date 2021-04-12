@@ -285,14 +285,18 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					.getStatus()
 					.equalsIgnoreCase(LaboratoryConstants.TEST_STATUS_COMPLETED)))) {
 				Order order = test.getOrder();
-				Order revisedOrder = order.cloneForDiscontinuing();
+                Order revisedOrder = order.cloneForRevision();
 				revisedOrder.setEncounter(test.getEncounter());
 				revisedOrder.setChangedBy(Context.getAuthenticatedUser());
+                revisedOrder.setAction(Order.Action.DISCONTINUE);
 				revisedOrder.setOrderer(order.getOrderer());
-				revisedOrder.setAutoExpireDate(new Date());
+                revisedOrder.setVoided(true);
 
 				Context.getOrderService().saveOrder(revisedOrder, null);
 
+                /*The effective start of the schedule is the scheduledDate if
+                 urgency is set to ON_SCHEDULED_DATE otherwise it is the dateActivated; the effective end date is
+                 dateStopped, if it is null then it is the autoExpireDate.*/
 				test.setStatus(LaboratoryConstants.TEST_STATUS_COMPLETED);
 				saveLaboratoryTest(test);
 				return LaboratoryConstants.COMPLETE_TEST_RETURN_STATUS_SUCCESS;

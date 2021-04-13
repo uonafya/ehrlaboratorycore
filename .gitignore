@@ -5,5 +5,5 @@
 /.classpath
 /.bin
 .idea/
-api/laboratory-api.iml
-omod/laboratory-omod.iml
+api/ehr-laboratory-api.iml
+omod/ehr-laboratory-omod.iml

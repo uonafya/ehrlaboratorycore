@@ -285,8 +285,8 @@ public class LaboratoryServiceImpl extends BaseOpenmrsService implements
 					.getStatus()
 					.equalsIgnoreCase(LaboratoryConstants.TEST_STATUS_COMPLETED)))) {
 				Order order = test.getOrder();
-				order.setVoided(true);
-				order.setAutoExpireDate(new Date());
+				order.setAction(Order.Action.DISCONTINUE);
+				order.isDiscontinued(new Date());
 				order.setChangedBy(Context.getAuthenticatedUser());
 				Context.getOrderService().saveOrder(order, null);
 				test.setStatus(LaboratoryConstants.TEST_STATUS_COMPLETED);

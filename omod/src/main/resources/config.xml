@@ -4,10 +4,10 @@
 <module configVersion="1.2">
 	
 	<!-- Base Module Properties -->
-	<id>@MODULE_ID@</id>
-	<name>@MODULE_NAME@</name>
-	<version>@MODULE_VERSION@</version>
-	<package>@MODULE_PACKAGE@</package>
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
 	<author>HealthIT</author>
 	<description>
 			Laboratory core module for the EHR work in Kenya
@@ -79,7 +79,7 @@
 	
 	<globalProperty>
 		<property>ehrlaboratory.maintainCode</property>
-		<defaultValue></defaultValue>
+		<defaultValue>1234</defaultValue>
 		<description>
 			Maintain code of Laboratory module for the EHR work
 		</description>

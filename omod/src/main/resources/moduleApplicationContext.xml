@@ -14,7 +14,7 @@
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 	-->
 	<!-- The default place to look for controllers that have annotations -->
-	<context:component-scan base-package="org.openmrs.module.ehrlaboratory.web" />
+	<context:component-scan base-package="org.openmrs.module.ehrlaboratory" />
 	<bean parent="serviceContext">
 		<property name="moduleService">
 			<list>

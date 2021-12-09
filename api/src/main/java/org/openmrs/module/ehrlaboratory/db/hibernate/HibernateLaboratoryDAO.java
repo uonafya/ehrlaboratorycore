@@ -10,17 +10,10 @@
 
 package org.openmrs.module.ehrlaboratory.db.hibernate;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Concept;
@@ -29,10 +22,16 @@ import org.openmrs.Order;
 import org.openmrs.OrderType;
 import org.openmrs.Patient;
 import org.openmrs.Role;
+import org.openmrs.module.ehrlaboratory.db.LaboratoryDAO;
 import org.openmrs.module.hospitalcore.model.Lab;
 import org.openmrs.module.hospitalcore.model.LabTest;
-import org.openmrs.module.ehrlaboratory.db.LaboratoryDAO;
-import org.openmrs.module.ehrlaboratory.util.LaboratoryConstants;
+import org.openmrs.module.ehrlaboratory.util.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class HibernateLaboratoryDAO implements LaboratoryDAO {
 

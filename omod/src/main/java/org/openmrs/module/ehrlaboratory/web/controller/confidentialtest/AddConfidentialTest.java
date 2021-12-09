@@ -36,11 +36,12 @@ import org.openmrs.Person;
 import org.openmrs.Provider;
 import org.openmrs.api.ProviderService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.ehrconfigs.utils.EhrConfigsUtils;
 import org.openmrs.module.hospitalcore.BillingConstants;
 import org.openmrs.module.hospitalcore.model.Lab;
 import org.openmrs.module.hospitalcore.util.GlobalPropertyUtil;
 import org.openmrs.module.ehrlaboratory.LaboratoryService;
-import org.openmrs.module.ehrlaboratory.web.util.LaboratoryUtil;
+import org.openmrs.module.ehrlaboratory.util.LaboratoryUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -148,7 +149,7 @@ public class AddConfidentialTest {
 		encounter.setEncounterDatetime(new Date());
 		encounter.setEncounterType(encounterType);
 		encounter.setPatient(patient);
-		encounter.setProvider(Context.getAuthenticatedUser().getPerson());
+		encounter.setProvider(EhrConfigsUtils.getDefaultEncounterRole(), EhrConfigsUtils.getProvider(Context.getAuthenticatedUser().getPerson()));
 		return encounter;
 	}
 
@@ -169,7 +170,7 @@ public class AddConfidentialTest {
 			order.setConcept(concept);
 			order.setCreator(Context.getAuthenticatedUser());
 			order.setDateCreated(new Date());
-			order.setOrderer(getProvider(Context.getAuthenticatedUser().getPerson()));
+			order.setOrderer(EhrConfigsUtils.getProvider(Context.getAuthenticatedUser().getPerson()));
 			order.setPatient(patient);
 			order.setDateActivated(startDate);
 			order.setAccessionNumber("0");
@@ -191,11 +192,5 @@ public class AddConfidentialTest {
 				.getService(LaboratoryService.class);
 		List<Order> orders = ls.getOrders(patient, startDate, concept);
 		return CollectionUtils.isEmpty(orders);
-	}
-
-	private Provider getProvider(Person person) {
-		ProviderService providerService = Context.getProviderService();
-		List<Provider> providerList = new ArrayList<Provider>(providerService.getProvidersByPerson(person));
-		return providerList.get(0);
 	}
 }

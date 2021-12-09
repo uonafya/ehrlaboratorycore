@@ -16,7 +16,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.ehrlaboratory.web.util.LaboratoryUtil;
+import org.openmrs.module.ehrlaboratory.util.LaboratoryUtil;
 
 public class ConceptPropertyEditor extends PropertyEditorSupport {
 	private Log log = LogFactory.getLog(this.getClass());

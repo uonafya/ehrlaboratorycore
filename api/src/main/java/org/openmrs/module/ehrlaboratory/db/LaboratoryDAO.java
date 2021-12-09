@@ -79,7 +79,6 @@ public interface LaboratoryDAO {
 	 * @param orderType
 	 * @param tests
 	 * @param patients
-	 * @param page
 	 * @return
 	 * @throws ParseException
 	 */

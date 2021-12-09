@@ -35,10 +35,9 @@ import org.openmrs.module.hospitalcore.model.LabTest;
 import org.openmrs.module.hospitalcore.util.GlobalPropertyUtil;
 import org.openmrs.module.ehrlaboratory.LaboratoryService;
 import org.openmrs.module.ehrlaboratory.db.LaboratoryDAO;
-import org.openmrs.module.ehrlaboratory.util.LaboratoryConstants;
+import org.openmrs.module.ehrlaboratory.util.*;
 
-public class LaboratoryServiceImpl extends BaseOpenmrsService implements
-		LaboratoryService {
+public class LaboratoryServiceImpl extends BaseOpenmrsService implements LaboratoryService {
 
 	private Log logger = LogFactory.getLog(getClass());
 

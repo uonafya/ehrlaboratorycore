@@ -136,7 +136,6 @@ public interface LaboratoryService extends OpenmrsService {
 	 * 
 	 * @param date
 	 * @param phrase
-	 * @param investigation
 	 * @return
 	 * @throws ParseException
 	 */

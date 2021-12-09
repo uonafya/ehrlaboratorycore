@@ -16,7 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.openmrs.module.ehrlaboratory.web.util.TestModel;
+import org.openmrs.module.ehrlaboratory.util.TestModel;
 
 public class ExportFillManager {
 	/**

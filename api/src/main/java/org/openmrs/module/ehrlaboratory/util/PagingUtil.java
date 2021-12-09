@@ -8,7 +8,7 @@
  * graphic logo is a trademark of OpenMRS Inc.
  */
 
-package org.openmrs.module.ehrlaboratory.web.util;
+package org.openmrs.module.ehrlaboratory.util;
 
 public class PagingUtil {
 	public static final int DEFAULT_PAGE_SIZE = 50;

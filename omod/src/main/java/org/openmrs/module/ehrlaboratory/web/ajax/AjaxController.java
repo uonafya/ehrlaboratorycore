@@ -16,7 +16,7 @@ import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.ehrlaboratory.LaboratoryService;
 import org.openmrs.module.ehrlaboratory.util.LaboratoryConstants;
-import org.openmrs.module.ehrlaboratory.web.util.LaboratoryUtil;
+import org.openmrs.module.ehrlaboratory.util.LaboratoryUtil;
 import org.openmrs.module.hospitalcore.model.LabTest;
 import org.openmrs.module.hospitalcore.util.PatientUtils;
 import org.springframework.stereotype.Controller;

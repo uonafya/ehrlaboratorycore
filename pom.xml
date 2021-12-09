@@ -28,8 +28,11 @@
 	</modules>
 
 	<properties>
-		<openMRSVersion>1.12.0</openMRSVersion>
-		<hospitalcoreVersion>1.0.0</hospitalcoreVersion>
+		<openMRSVersion>2.3.3</openMRSVersion>
+		<hospitalcoreVersion>1.0.7-SNAPSHOT</hospitalcoreVersion>
+		<legacyUiVersion>1.5.0</legacyUiVersion>
+		<kenyaemrVersion>17.0.3</kenyaemrVersion>
+		<ehrconfigsVersion>1.0.10-SNAPSHOT</ehrconfigsVersion>
 	</properties>
 
 	<dependencyManagement>
@@ -66,6 +69,31 @@
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>hospitalcore-api</artifactId>
 				<version>${hospitalcoreVersion}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>legacyui-api</artifactId>
+				<version>${legacyUiVersion}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>legacyui-omod</artifactId>
+				<version>${legacyUiVersion}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>kenyaemr-api</artifactId>
+				<version>${kenyaemrVersion}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>ehrconfigs-api</artifactId>
+				<version>${ehrconfigsVersion}</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>

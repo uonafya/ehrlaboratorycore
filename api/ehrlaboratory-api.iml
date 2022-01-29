@@ -140,7 +140,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.openmrs.module:hospitalcore-api:1.0.7-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.openmrs.module:hospitalcore-api:2.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.openmrs.module:legacyui-omod:1.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.openmrs.module:legacyui-api:1.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.openmrs.directwebremoting:dwr:2.0.7-mod" level="project" />
